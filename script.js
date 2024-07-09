@@ -8,10 +8,10 @@ let attempts = 0;
 function success(position) {
   let lat = position.coords.latitude;
   let long = position.coords.longitude;
-  let speed = position.coords.speed * 2.237;
+  let speed = Math.round(position.coords.speed * 2.237);
 
-  locText.innerText = `Latitude: ${lat}, Longitude: ${long}`;
-  speedText.innerText = `Speed: ${speed} mph`;
+  // locText.innerText = `Latitude: ${lat}, Longitude: ${long}`;
+  speedText.innerText = `${speed}`;
   attempts++;
   attText.innerText = `Attempt: ${attempts}`;
 }
