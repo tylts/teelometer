@@ -8,6 +8,6 @@
 .speedometer {
   margin: 0 auto;
   text-align: center;
-  font-size: 40rem;
+  font-size: 100vw;
   width: 100%;
 }
