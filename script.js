@@ -17,6 +17,7 @@ function success(position) {
 
   speedText.innerText = `${speed}`;
   attempts++;
+  getHighSpeed();
   highSpeedText.innerText = `${highSpeed}`;
   attText.innerText = `Attempt: ${attempts}`;
 }
