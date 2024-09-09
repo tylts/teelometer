@@ -6,7 +6,7 @@ const startBtn = document.querySelector('#start');
 const stopBtn = document.querySelector('#stop');
 const highSpeedText = document.querySelector('#hi-speed');
 
-let highSpeed = highSpeedText.textContent;
+let highSpeed;
 let watchID;
 let attempts = 0;
 
@@ -17,7 +17,11 @@ function success(position) {
 
   speedText.innerText = `${speed}`;
   attempts++;
-  getHighSpeed();
+
+  if (speed > highSpeed) {
+    highSpeed = speed;
+  }
+
   highSpeedText.innerText = `${highSpeed}`;
   attText.innerText = `Attempt: ${attempts}`;
 }
@@ -31,12 +35,6 @@ options = {
   enableHighAccuracy: true,
   timeout: 2000,
 };
-
-function getHighSpeed() {
-  if (speed > highSpeed) {
-    highSpeed = speed;
-  }
-}
 
 startBtn.addEventListener('click', () => {
   watchID = navigator.geolocation.watchPosition(success, error, options);
