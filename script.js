@@ -4,8 +4,10 @@ const uhOhText = document.querySelector('#error');
 const attText = document.querySelector('#attempt-text');
 const startBtn = document.querySelector('#start');
 const stopBtn = document.querySelector('#stop');
-const highSpeed = document.querySelector('#hi-speed');
+const highSpeedText = document.querySelector('#hi-speed');
 
+let highSpeed = highSpeedText.textContent;
+let watchID;
 let attempts = 0;
 
 function success(position) {
@@ -15,7 +17,7 @@ function success(position) {
 
   speedText.innerText = `${speed}`;
   attempts++;
-  highSpeed.innerText = `High Speed: ${getHighSpeed(speed)}`;
+  highSpeedText.innerText = `${highSpeed}`;
   attText.innerText = `Attempt: ${attempts}`;
 }
 
@@ -29,15 +31,20 @@ options = {
   timeout: 2000,
 };
 
-function getHighSpeed(speed) {
-  let highestSpeed = speed;
-  if (speed > highestSpeed) {
-    highestSpeed = speed;
+function getHighSpeed() {
+  if (speed > highSpeed) {
+    highSpeed = speed;
   }
-  return highestSpeed;
 }
 
 startBtn.addEventListener('click', () => {
-  let watchID = navigator.geolocation.watchPosition(success, error, options);
+  watchID = navigator.geolocation.watchPosition(success, error, options);
   console.log(watchID);
+  startBtn.setAttribute('disabled', true);
 });
+
+// stopBtn.addEventListener('click', () => {
+//   navigator.geolocation.clearWatch(watchID);
+//   watchID = null;
+//   console.log(watchID);
+// });
