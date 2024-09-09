@@ -5,9 +5,42 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: sans-serif;
+  background-color: #501a9c;
+  color: black;
+}
+
 .speedometer {
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.buttons {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  border: 1px solid black;
+  background-color: black;
+  color: #501a9c;
+  padding: 1rem 4rem;
+  border-radius: 12px;
+  font-size: 2rem;
+  margin: 2rem 1rem;
+}
+
+#speed-text {
   text-align: center;
-  font-size: 100vw;
-  width: 100%;
+  font-size: 30rem;
+}
+
+#attempt-text {
+  margin-bottom: 1rem;
 }
